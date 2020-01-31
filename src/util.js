@@ -48,35 +48,35 @@ async function main(round, decks, game) {
 }
 
 async function choose(game) {
-  const currentDecks = await getGame(game);
-  const getDeckAnswer = await inquirer.prompt(genDeckList(currentDecks));
-  const getDeckConfirm = await inquirer.prompt(confirmDeck(getDeckAnswer, game));
+  const currentGame = await getGame(game);
+  const getDeckAnswer = await inquirer.prompt(genDeckList(currentGame));
+  const getDeckConfirm = await inquirer.prompt(confirmDeck(getDeckAnswer.title, game));
 }
 
 const getGame = (game) => {
   return Promise.resolve(game);
 }
-const confirmDeck = (id, game) => {
-  const deckIndex = game.getIndex(id);
+const confirmDeck = (deckName, game) => {
+  const deckIndex = game.getIndex(deckName);
   return {
     name: 'feedback',
-    message: `Your chosen deck is ${id.decks}
+    message: `Your chosen deck is ${JSON.stringify(deckName)}
           ----------------------------------------------------------- `
   }
 }
 
 const genDeckList = (game) => {
-  let decks = game.decks;
+  let decks = game.deckList;
   let choices = decks.map((decks, index) => {
     return {
       key: index,
-      value: game.decks[index].name
+      value: game.deckList[index].name
     }
   });
   return {
     type: 'rawlist',
     message: 'Choose a Deck',
-    name: 'decks',
+    name: 'title',
     choices: choices
   };
 }
