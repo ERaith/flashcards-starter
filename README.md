@@ -1,4 +1,5 @@
 # FlashCards
+This project is a test, in multiple ways. The literal portion is that this program runs in the terminal and is a flashcard game that outputs your score at the end. The deeper meaning to this project is that it was created utilizing the TDD method of programming and is fully tested.
 
 ## Setup
 
@@ -37,17 +38,5 @@ When the game is functioning appropriately, you will be prompted for each questi
 
 ## Example Game
 ![flash cards example gif](https://media.giphy.com/media/1zkb1q58eTiTH6D7wc/giphy.gif)
-
----
-
-## Test Files Organization
-
-Similar to feature code, your test code needs to be put in a specific place for it to run successfully.
-
-#### Linting Your Code
-
-Run the command in your terminal `npm run lint` to run the linter on your JavaScript code. There will be errors and warnings right from the start in this starter kit - the linter is still running successfully.
-
-Your linter will look at the JavaScript files you have within the `src` directory and the `test` directory. 
 
 ---
