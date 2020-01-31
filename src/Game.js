@@ -10,13 +10,13 @@ const Card = require('./Card');
 class Game {
   constructor() {
     this.currentRound = 0;
-    this.decks = [];
-    this.currentDeck = this.decks[0];
+    this.deckList = [];
+    this.currentDeck = this.deckList[0];
   }
   start() {
     let deck = new Deck(this.newDeck(prototypeQuestions), 'prototype');
     let deck2 = new Deck(this.newDeck(myNewData), 'NewData');
-    this.decks.push(deck, deck2);
+    this.deckList.push(deck, deck2);
     let round = this.newRound(deck)
     this.printMessage(deck, round);
     this.printQuestion(round);
@@ -26,8 +26,8 @@ class Game {
   }
   getIndex(name) {
     var deckIndex = 0;
-    this.decks.forEach(function(element, index) {
-      if (element.name === name.decks) {
+    this.deckList.forEach(function(element, index) {
+      if (element.name === name) {
         deckIndex = index;
       }
     });
@@ -50,7 +50,7 @@ class Game {
                            Welcome to the Next Round!!
       -----------------------------------------------------------------------`)
     console.log(this.currentRound);
-    let round = new Round(this.decks[this.currentRound]);
+    let round = new Round(this.deckList[this.currentRound]);
     this.printQuestion(round);
   }
   printMessage(deck) {
@@ -61,7 +61,7 @@ class Game {
   }
 
   printQuestion(round) {
-    util.asyncHelper(round, this.decks, this);
+    util.asyncHelper(round, this.deckList, this);
   }
 }
 
